@@ -95,15 +95,15 @@ st.markdown(
 
 st.sidebar.header("지역 선택")
 sido_options = sorted(df.loc[df["레벨"] == 1, "시도"].dropna().unique().tolist())
-sido = st.sidebar.selectbox("##도/시", sido_options)
+sido = st.sidebar.selectbox("도/시", sido_options)
 
 sigungu_df = df[(df["시도"] == sido) & (df["레벨"] >= 2)]
 sigungu_options = sorted(sigungu_df["시군구"].dropna().unique().tolist())
-sigungu = st.sidebar.selectbox("##시/군/구", sigungu_options)
+sigungu = st.sidebar.selectbox("시/군/구", sigungu_options)
 
 eup_df = df[(df["시도"] == sido) & (df["시군구"] == sigungu) & (df["레벨"] >= 3)]
 eup_options = sorted(eup_df["읍면동"].dropna().unique().tolist())
-eup = st.sidebar.selectbox("##동/읍/면", eup_options)
+eup = st.sidebar.selectbox("동/읍/면", eup_options)
 
 selected = choose_exact_region(df, sido, sigungu, eup)
 
